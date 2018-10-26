@@ -1,4 +1,4 @@
-button {
+.primary {
   padding: 20px;
   font-size: 18px;
   border-radius: 30px;
@@ -9,6 +9,17 @@ button {
     #4fb477 70%
   );
   color: white;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+}
+
+.secondary {
+  border: 1px solid #636363;
+  padding: 20px;
+  font-size: 18px;
+  border-radius: 30px;
+  color: #4fb477;
   display: block;
   text-align: center;
   cursor: pointer;

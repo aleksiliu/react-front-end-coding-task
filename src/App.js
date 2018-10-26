@@ -53,29 +53,25 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state.products);
     return (
       <div className="container">
         <div className="content">
           <h1> Car insurance </h1>
-          <p>Take good care of your beloved car and purhacse an insurance.</p>
+          <p>Take good care of your beloved car and purchase an insurance.</p>
           <Modal show={this.state.show} handleClose={this.hideModal}>
             <h2> Select the insurance</h2>
             <form>
               {this.state.products.map(product => (
                 <label
                   key={product.id}
-                  style={{
-                    color: product.isChecked ? 'white' : '',
-                    backgroundColor: product.isChecked ? '#4fb477' : ''
-                  }}
+                  className={product.isChecked ? 'selected' : ''}
                 >
                   <span className="product-title">{product.product}</span>{' '}
                   <span>{product.price}€</span>
                   <Checkbox
                     name="isChecked"
                     type="checkbox"
-                    checked={this.state.isChecked}
+                    checked={product.isChecked}
                     onChange={() => this.onChange(product.id)}
                   />
                 </label>
@@ -98,6 +94,7 @@ class App extends Component {
           </Modal>
 
           <Button
+            variant="primary"
             onClick={() => {
               this.showModal();
             }}
