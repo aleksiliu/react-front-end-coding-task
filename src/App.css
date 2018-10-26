@@ -8,16 +8,40 @@ html {
   font-size: 1em;
 }
 
+html,
 body {
-  background-color: white;
+  height: 100%;
+  width: 100%;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
   font-family: 'Arial', serif;
   font-weight: 400;
   line-height: 1.45;
   color: #333;
 }
 
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.content {
+  max-width: 1200px;
+}
+
 p {
   margin-bottom: 1.3em;
+  color: rgb(99, 99, 99);
+  font-size: 1.333em;
 }
 
 h1,
@@ -44,9 +68,4 @@ h3 {
 
 h4 {
   font-size: 1.333em;
-}
-
-.wrapper {
-  max-width: 960px;
-  margin: 0 auto;
 }

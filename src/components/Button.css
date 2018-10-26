@@ -1,7 +1,15 @@
 button {
-  padding: 15px;
-  background-color: #37914a;
-  color: #fff;
-  border-radius: 6px;
-  border: 0;
+  padding: 20px;
+  font-size: 18px;
+  border-radius: 30px;
+  background-image: radial-gradient(
+    ellipse farthest-corner at 0 140%,
+    #4fb477 0%,
+    rgb(67, 153, 100) 70%,
+    #4fb477 70%
+  );
+  color: white;
+  display: block;
+  text-align: center;
+  cursor: pointer;
 }

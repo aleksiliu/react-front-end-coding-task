@@ -53,52 +53,57 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state);
+    console.log(this.state.products);
     return (
-      <div className="wrapper">
-        <h1>Car insurances</h1>
-        <p>Take good care of your beloved car and purhacse an insurance.</p>
-        <Modal show={this.state.show} handleClose={this.hideModal}>
-          <h2> Select the insurance: </h2>
-          <form>
-            {this.state.products.map(product => (
-              <label
-                key={product.id}
-                style={{
-                  backgroundColor: product.isChecked ? 'gray' : ''
-                }}
-              >
-                {product.product}
-                <Checkbox
-                  name="isChecked"
-                  type="checkbox"
-                  checked={this.state.isChecked}
-                  onChange={() => this.onChange(product.id)}
-                />
-              </label>
-            ))}
-          </form>
+      <div className="container">
+        <div className="content">
+          <h1> Car insurance </h1>
+          <p>Take good care of your beloved car and purhacse an insurance.</p>
+          <Modal show={this.state.show} handleClose={this.hideModal}>
+            <h2> Select the insurance: </h2>
+            <form>
+              {this.state.products.map(product => (
+                <label
+                  key={product.id}
+                  style={{
+                    color: product.isChecked ? 'white' : '',
+                    backgroundColor: product.isChecked ? '#4fb477' : ''
+                  }}
+                >
+                  {product.product}
+                  <Checkbox
+                    name="isChecked"
+                    type="checkbox"
+                    checked={this.state.isChecked}
+                    onChange={() => this.onChange(product.id)}
+                  />
+                </label>
+              ))}
+            </form>
 
-          <div className="selected-items">
-            <p>
-              Total
-              {this.state.products
-                .filter(product => product.isChecked)
-                .map(product => product.price)
-                .reduce((a, b) => a + b, 0)
-                .toFixed(2)}
-              €
-            </p>
-          </div>
-        </Modal>
+            <div className="selected-items">
+              <p>
+                Total
+                <span>
+                  {this.state.products
+                    .filter(product => product.isChecked)
+                    .map(product => product.price)
+                    .reduce((a, b) => a + b, 0)
+                    .toFixed(2)}
+                  €
+                </span>
+              </p>
+            </div>
+          </Modal>
 
-        <Button
-          onClick={() => {
-            this.showModal();
-          }}
-        >
-          See more
-        </Button>
+          <Button
+            onClick={() => {
+              this.showModal();
+            }}
+          >
+            See more
+          </Button>
+        </div>
       </div>
     );
   }
