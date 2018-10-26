@@ -9,19 +9,19 @@ class App extends Component {
     show: false,
     products: [
       {
-        product: 'Liability insurance 66.35€',
+        product: 'Liability insurance',
         price: 66.35,
         id: 1,
         isChecked: false
       },
       {
-        product: 'Repairs expenses insurance 83.49€',
+        product: 'Repairs expenses insurance',
         price: 83.49,
         id: 2,
         isChecked: false
       },
       {
-        product: 'Destruction insurance 83.49€',
+        product: 'Destruction insurance',
         price: 83.49,
         id: 3,
         isChecked: false
@@ -60,7 +60,7 @@ class App extends Component {
           <h1> Car insurance </h1>
           <p>Take good care of your beloved car and purhacse an insurance.</p>
           <Modal show={this.state.show} handleClose={this.hideModal}>
-            <h2> Select the insurance: </h2>
+            <h2> Select the insurance</h2>
             <form>
               {this.state.products.map(product => (
                 <label
@@ -70,7 +70,8 @@ class App extends Component {
                     backgroundColor: product.isChecked ? '#4fb477' : ''
                   }}
                 >
-                  {product.product}
+                  <span className="product-title">{product.product}</span>{' '}
+                  <span>{product.price}€</span>
                   <Checkbox
                     name="isChecked"
                     type="checkbox"
@@ -83,7 +84,7 @@ class App extends Component {
 
             <div className="selected-items">
               <p>
-                Total
+                Total{' '}
                 <span>
                   {this.state.products
                     .filter(product => product.isChecked)

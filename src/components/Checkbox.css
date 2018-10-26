@@ -1,7 +1,14 @@
 label {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
   padding: 20px;
+  border-radius: 6px;
   border: 1px solid gray;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+input {
+  margin-top: 15px;
 }
