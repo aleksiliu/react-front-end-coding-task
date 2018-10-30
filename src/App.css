@@ -40,6 +40,7 @@ body {
 
 .content {
   max-width: 1200px;
+  padding: 0 20px;
 }
 
 p {
@@ -57,7 +58,7 @@ h1,
 h2,
 h3,
 h4 {
-  margin: 0 0 0.5em;
+  margin: 0 0 0.3em;
   font-weight: inherit;
   line-height: 1.2;
 }
@@ -90,4 +91,10 @@ form {
   grid-gap: 20px;
   grid-template-columns: 1fr 1fr 1fr;
   margin: 20px 0;
+}
+
+@media (max-width: 767px) {
+  form {
+    grid-template-columns: 1fr;
+  }
 }
