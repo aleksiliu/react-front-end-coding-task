@@ -1,18 +1,34 @@
 import React, { Component } from 'react';
 import './App.css';
-import Modal from './components/Modal';
 import Button from './components/Button';
 import Checkbox from './components/Checkbox';
 
+import Modal from 'react-modal';
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    textAlign: 'center',
+    border: '0'
+  }
+};
+
+Modal.setAppElement('#root');
+
 class App extends Component {
   state = {
-    show: false,
+    modalIsOpen: true,
     products: [
       {
         product: 'Liability insurance',
         price: 66.35,
         id: 1,
-        isChecked: false
+        isChecked: true
       },
       {
         product: 'Repairs expenses insurance',
@@ -29,7 +45,16 @@ class App extends Component {
     ]
   };
 
+  openModal = () => {
+    this.setState({ modalIsOpen: true });
+  };
+
+  closeModal = () => {
+    this.setState({ modalIsOpen: false });
+  };
+
   onChange = id => {
+    console.log(id);
     this.setState({
       products: this.state.products.map(product => {
         if (product.id === id) {
@@ -44,21 +69,22 @@ class App extends Component {
     });
   };
 
-  showModal = () => {
-    this.setState({ show: true });
-  };
-
-  hideModal = () => {
-    this.setState({ show: false });
-  };
-
   render() {
+    console.log(this.state.products[0]);
     return (
       <div className="container">
         <div className="content">
           <h1> Car insurance </h1>
           <p>Take good care of your beloved car and purchase an insurance.</p>
-          <Modal show={this.state.show} handleClose={this.hideModal}>
+          <Button variant="primary" onClick={this.openModal}>
+            See more
+          </Button>
+          <Modal
+            isOpen={this.state.modalIsOpen}
+            onRequestClose={this.closeModal}
+            style={customStyles}
+            contentLabel="Modal"
+          >
             <h2> Select the insurance</h2>
             <form>
               {this.state.products.map(product => (
@@ -66,10 +92,10 @@ class App extends Component {
                   key={product.id}
                   className={product.isChecked ? 'selected' : ''}
                 >
-                  <span className="product-title">{product.product}</span>{' '}
+                  <span className="product-title">{product.product}</span>
                   <span>{product.price}€</span>
                   <Checkbox
-                    name="isChecked"
+                    name={product.product}
                     type="checkbox"
                     checked={product.isChecked}
                     onChange={() => this.onChange(product.id)}
@@ -91,16 +117,10 @@ class App extends Component {
                 </span>
               </p>
             </div>
+            <Button variant="secondary" onClick={this.closeModal}>
+              Done
+            </Button>
           </Modal>
-
-          <Button
-            variant="primary"
-            onClick={() => {
-              this.showModal();
-            }}
-          >
-            See more
-          </Button>
         </div>
       </div>
     );
